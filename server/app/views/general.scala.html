@@ -1,0 +1,26 @@
+@(posts: scala.collection.mutable.ListBuffer[(String, String)])(implicit request: RequestHeader)
+
+@main("General Chat"){
+    <h1> All Messages </h1>
+
+    <a href="@routes.Messager.goBack" id="returnHomeLink">Home</a>
+
+    <div>
+        <ul>
+            @for(post <- posts){
+                <li>
+                    @post.toString.replace("(","").replace(",",": ").replace(")","")
+                </li>
+            }
+
+        </ul>
+    </div>
+
+    <form method="post" action="@routes.Messager.postGM" id="genInput">
+        @helper.CSRF.formField
+        <input type="text" name="newPost" placeholder="Send a Message" id="generalInput"></input>
+        <input type="submit" value="Send"></input>
+
+    </form>
+    
+}

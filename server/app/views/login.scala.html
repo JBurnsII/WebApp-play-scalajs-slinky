@@ -1,0 +1,17 @@
+@()(implicit request: RequestHeader)
+
+@main("Login") {
+    <h2>Login</h2>
+
+    <form method="post" action="@routes.Messager.validateLogin">
+        @helper.CSRF.formField
+        Username: <input type="text" name="username" id="loginUsername"></input>
+        <br>
+        Password: <input type="password" name="password" id="loginPassword"></input>
+        <br>
+        <input type="submit" value="Login"></input>
+    </form>
+<br>
+    <a href="@routes.Messager.createUser" id="newUserLink">Don't have an account yet? Click Here</a>
+
+}

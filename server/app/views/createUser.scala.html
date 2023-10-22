@@ -1,0 +1,17 @@
+@()(implicit request: RequestHeader)
+
+@main("User Creation") {
+    <h2>Create Account</h2>
+
+    <form method="post" action="@routes.Messager.validateCreation">
+        @helper.CSRF.formField
+        Username: <input type="text" name="username" id="createUsername"></input>
+        <br>
+        Password: <input type="password" name="password" id="createPassword"></input>
+        <br>
+        <input type="submit" value="Create Account"></input>
+    </form>
+
+   
+
+}

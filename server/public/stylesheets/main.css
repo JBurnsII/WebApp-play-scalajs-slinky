@@ -1,0 +1,34 @@
+ul {
+    overflow:scroll;
+    height: 550px;
+    vertical-align: bottom;
+    border-top: solid;
+    border-bottom: solid;
+    list-style-type: none;
+}
+
+li {
+    border-style: solid;
+    border-top: 0;
+}
+
+#genInput{
+    position:fixed;
+    bottom: 10px;
+}
+
+#dmList{
+    overflow:scroll;
+    max-height: 250px;
+    border-top: solid;
+    border-bottom: solid;
+    list-style-type: none;
+}
+
+#searchList{
+    overflow:scroll;
+    max-height: 200px;
+    border-top: solid;
+    border-bottom: solid;
+    list-style-type: none;
+}

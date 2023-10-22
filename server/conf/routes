@@ -3,7 +3,21 @@
 # ~~~~
 
 # Home page
-GET        /                             controllers.Application.index
+GET        /                             controllers.Messager.login
+
+GET         /login                      controllers.Messager.login
+POST        /validate                   controllers.Messager.validateLogin
+GET        /createUser                 controllers.Messager.createUser
+POST        /validateCreation           controllers.Messager.validateCreation
+GET         /logout                     controllers.Messager.logout
+
+GET         /home                       controllers.Messager.home(user)
+GET         /goBack                     controllers.Messager.goBack
+GET         /general                    controllers.Messager.general
+POST        /postGM                     controllers.Messager.postGM
+GET         /openDM                     controllers.Messager.openDM(talkingTo)
+POST        /sendDM                     controllers.Messager.sendDM(to)
+POST        /search                     controllers.Messager.search
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)

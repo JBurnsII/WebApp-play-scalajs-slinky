@@ -1,0 +1,25 @@
+@(talkingTo: String, posts: scala.collection.mutable.ListBuffer[(String, String)])(implicit request: RequestHeader)
+
+
+@main(talkingTo){
+    <h1>Chatting with @talkingTo</h1>
+
+    <a href="@routes.Messager.goBack" id="returnHome">Home</a>
+
+    <ul>
+        @for(post <- posts){
+            <li>
+                @post.toString.replace("(","").replace(",",": ").replace(")","")
+            </li>
+        }
+
+    </ul>
+
+    <form method="post" action="@routes.Messager.sendDM(talkingTo)" id="genInput">
+        @helper.CSRF.formField
+        <input type="text" name="newDM" placeholder="Send a Message" id="dmInput"></input>
+        <input type="submit" value="Send"></input>
+
+    </form>
+
+}

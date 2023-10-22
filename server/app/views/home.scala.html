@@ -1,0 +1,39 @@
+@(username: String, directMessages: scala.collection.mutable.ListBuffer[String], users: String)(implicit request: RequestHeader)
+
+@main("Home"){
+    <h1>@username's Conversations</h1>
+
+    <a href="@routes.Messager.logout" id="logoutLink">Logout</a>
+    <br>
+    
+    <a href="@routes.Messager.general" id="generalLink">General</a>
+
+    <ul id="dmList">
+        @for(directMessage <- directMessages){
+            <li>
+                <a href="@routes.Messager.openDM(directMessage)">>@directMessage</a>
+            </li>
+        }
+    </ul>
+
+    <h3>Search Results</h3>
+    <ul id="searchList">
+        @for(user <- MessagesInMemoryModel.getUsers){
+            <li>
+                @if(user.contains(users)){
+                <a href="@routes.Messager.openDM(user)" id="@user">>@user</a>
+                }
+            </li>
+        }
+    </ul>
+
+    <form method="post" action="@routes.Messager.search" id="userSearch">
+        @helper.CSRF.formField
+        <input type="text" name="searchValue" placeholder="Search for users" id="userSearchInput"></input>
+        <input type="submit" value="Send"></input>
+
+    </form>
+
+
+    
+}
